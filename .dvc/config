@@ -1,0 +1,7 @@
+[core]
+    remote = myremote
+
+[remote "myremote"]
+    url = gdrive://10LZ1TOrOFO6p9lZjXrOfm1U7_x_YfBeX
+    gdrive_use_service_account = true
+    gdrive_service_account_json_file_path = C:/Users/ILHAM/projet_py/mlopss.json
