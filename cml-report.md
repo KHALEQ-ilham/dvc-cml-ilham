@@ -8,3 +8,8 @@
 - Accuracy: **0.9829**
 ![SVM Confusion](svm_confusion.png)
 ![SVM ROC](svm_roc.png)
+
+## Random Forest
+- Accuracy: **0.9767**
+![RF Confusion](rf_confusion.png)
+![RF ROC](rf_roc.png)
