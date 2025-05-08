@@ -20,17 +20,28 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
+<<<<<<< HEAD
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, roc_curve, auc
+=======
+from sklearn.metrics import accuracy_score , confusion_matrix, roc_curve, auc
+>>>>>>> main
 from abc import ABC, abstractmethod
 import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
 import os
+<<<<<<< HEAD
 
 # 1. Charger les données
 df = pd.read_csv("data/spam.csv", encoding="ISO-8859-1")  # utiliser les bonnes colonnes
 
+=======
+# 1. Cha
+df = pd.read_csv("data/spam.csv", encoding="ISO-8859-1")  # utiliser les bonnes colonnes
+
+
+>>>>>>> main
 # 2. Conversion des labels (ham = 0, spam = 1)
 df['label'] = df['label'].map({'ham': 0, 'spam': 1})
 
@@ -42,7 +53,12 @@ X = df['message']
 y = df['label']
 
 # 5. Split train/test
+<<<<<<< HEAD
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+=======
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42)
+>>>>>>> main
 
 # 6. Nettoyage simple (messages trop courts ou vides)
 def clean_texts(X, y):
@@ -90,6 +106,7 @@ class SVMTextClassifier(TextClassifier):
         X_vect = self.vectorizer.transform(X)
         return self.model.predict(X_vect)
 
+<<<<<<< HEAD
 # 10. Random Forest
 class RFTextClassifier(TextClassifier):
     def __init__(self):
@@ -105,16 +122,23 @@ class RFTextClassifier(TextClassifier):
         return self.model.predict(X_vect)
 
 # 11. Évaluation
+=======
+# 10. Évaluation
+>>>>>>> main
 def evaluate_model(model: TextClassifier, X_train, y_train, X_test, y_test):
     model.train(X_train, y_train)
     y_pred = model.predict(X_test)
     acc = accuracy_score(y_test, y_pred)
     print(f"Accuracy: {acc:.4f}")
+<<<<<<< HEAD
 
 # Créer le dossier 'models' si nécessaire
 os.makedirs("models", exist_ok=True)
 
 # 12. Entraînement et évaluation des modèles
+=======
+os.makedirs("models", exist_ok=True)
+>>>>>>> main
 # Logistic Regression
 model = LogisticTextClassifier()
 model.train(X_train, y_train)
@@ -130,6 +154,7 @@ y_pred_svm = model1.predict(X_test)
 acc_svm = accuracy_score(y_test, y_pred_svm)
 evaluate_model(model1, X_train, y_train, X_test, y_test)
 joblib.dump(model1, os.path.join("models", "svm_model.pkl"))
+<<<<<<< HEAD
 
 # Random Forest
 model2 = RFTextClassifier()
@@ -140,6 +165,9 @@ evaluate_model(model2, X_train, y_train, X_test, y_test)
 joblib.dump(model2, os.path.join("models", "rf_model.pkl"))
 
 # 13. Rapport
+=======
+# Rapport
+>>>>>>> main
 with open("cml-report.md", "w") as f:
     f.write(f"# Rapport CML\n")
     f.write(f"## Logistic Regression\n")
@@ -149,6 +177,7 @@ with open("cml-report.md", "w") as f:
     f.write(f"## SVM\n")
     f.write(f"- Accuracy: **{acc_svm:.4f}**\n")
     f.write(f"![SVM Confusion](svm_confusion.png)\n")
+<<<<<<< HEAD
     f.write(f"![SVM ROC](svm_roc.png)\n\n")
     f.write(f"## Random Forest\n")
     f.write(f"- Accuracy: **{acc_rf:.4f}**\n")
@@ -161,6 +190,14 @@ with open("metrics.txt", "w") as f:
     f.write(f"Random Forest Accuracy: {acc_rf:.4f}\n")
 
 # 14. Visualisation
+=======
+    f.write(f"![SVM ROC](svm_roc.png)\n")
+
+with open("metrics.txt", "w") as f:
+    f.write("Accuracy: 0.93\nPrecision: 0.91\nRecall: 0.89")
+
+
+>>>>>>> main
 def plot_confusion_matrix(y_true, y_pred, title="Confusion Matrix", filename="confusion.png"):
     cm = confusion_matrix(y_true, y_pred)
     plt.figure(figsize=(5,4))
@@ -195,9 +232,12 @@ plot_confusion_matrix(y_test, y_pred_log, "Logistic Regression - Confusion", "lo
 plot_roc_curve(model, X_test, y_test, "Logistic Regression - ROC", "logistic_roc.png")
 plot_confusion_matrix(y_test, y_pred_svm, "SVM - Confusion", "svm_confusion.png")
 plot_roc_curve(model1, X_test, y_test, "SVM - ROC", "svm_roc.png")
+<<<<<<< HEAD
 plot_confusion_matrix(y_test, y_pred_rf, "Random Forest - Confusion", "rf_confusion.png")
 plot_roc_curve(model2, X_test, y_test, "Random Forest - ROC", "rf_roc.png")
 
+=======
+>>>>>>> main
 
 # +
 import os

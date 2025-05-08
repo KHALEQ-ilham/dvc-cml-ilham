@@ -6,4 +6,8 @@ seaborn==0.13.2
 cython>=3.0.0
 joblib
 dvc
+<<<<<<< HEAD
 dvc-gdrive
+=======
+dvc-gdrive
+>>>>>>> main
