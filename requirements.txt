@@ -5,3 +5,5 @@ matplotlib==3.8.4
 seaborn==0.13.2
 cython>=3.0.0
 joblib
+dvc
+dvc-gdrive
